@@ -33,12 +33,14 @@ public class TeamController {
         return ResponseEntity.ok(teamService.registerTeam(teamRequestDTO));    }
 
     @PutMapping
-    public String updateTeam(@RequestBody Team team){
-        return "";
+    public ResponseEntity<Team> updateTeam(@RequestBody TeamRequestDTO teamRequestDTO){
+        return ResponseEntity.ok(teamService.updateTeam(teamRequestDTO));
     }
 
     @DeleteMapping("/{id}")
-    public String deleteTeam(@RequestParam("id") Long id){
-        return "";
+    public ResponseEntity<String> deleteTeam(@PathVariable("id") Long id){
+         teamService.deleteTeam(id);
+         return ResponseEntity.ok("Time deletado com sucesso");
     }
+
 }

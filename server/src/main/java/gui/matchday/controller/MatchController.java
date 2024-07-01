@@ -14,7 +14,7 @@ public class MatchController {
     }
 
     @GetMapping("{id}")
-    public String getMatchById(@RequestParam("id") Long id){
+    public String getMatchById(@PathVariable("id") Long id){
         return "";
     }
 
@@ -29,7 +29,7 @@ public class MatchController {
     }
 
     @DeleteMapping("{id}")
-    public String deleteTeam(@RequestParam("id") Long id){
+    public String deleteTeam(@PathVariable("id") Long id){
         return "";
     }
 }
