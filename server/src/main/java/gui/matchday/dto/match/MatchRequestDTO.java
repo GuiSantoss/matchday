@@ -18,7 +18,7 @@ public class MatchRequestDTO {
     private Date date;
     private Integer scoreTeamOne;
     private Integer scoreTeamTwo;
-    private Long teamOne;
-    private Long teamTwo;
-    private Long supportedTeam;
+    private Long teamOneId;
+    private Long teamTwoId;
+    private Long supportedTeamId;
 }

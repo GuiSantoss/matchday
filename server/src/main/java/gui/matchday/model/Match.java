@@ -1,6 +1,7 @@
 package gui.matchday.model;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import gui.matchday.dto.match.MatchRequestDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -39,6 +40,16 @@ public class Match {
     @ManyToOne
     @JsonManagedReference
     @JoinColumn(name = "team_supported_id")
-    private Team supottedTeam;
+    private Team supportedTeam;
+
+    public Match(MatchRequestDTO matchRequestDTO, Team teamOne, Team teamTwo, Team supportedTeam){
+        this.id = matchRequestDTO.getId();
+        this.date = matchRequestDTO.getDate();
+        this.scoreTeamOne = matchRequestDTO.getScoreTeamOne();
+        this.scoreTeamTwo = matchRequestDTO.getScoreTeamTwo();
+        this.teamOne = teamOne;
+        this.teamTwo = teamTwo;
+        this.supportedTeam = supportedTeam;
+    }
 }
 
