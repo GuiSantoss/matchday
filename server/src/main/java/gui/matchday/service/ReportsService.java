@@ -28,7 +28,8 @@ public ReportsResponseDTO getAllReports(){
     Integer winsQuantity = getWinsQuantity();
     Double winPercentage = getWinPercentage();
     Team mostWatchedTeam = getMostWatchedTeam();
-    return new  ReportsResponseDTO(matchesQuantity,winsQuantity, winPercentage, mostWatchedTeam);
+    Integer daysWithoutWatching = getDaysWithoutWatching();
+    return new  ReportsResponseDTO(matchesQuantity,winsQuantity, winPercentage, mostWatchedTeam, daysWithoutWatching);
 }
 
 private Integer getMatchesQuantity(){
@@ -104,4 +105,8 @@ public Integer getWinsQuantity(){
     public Team getMostWatchedTeam(){
         return teamRepository.getMostWatchedTeam();
 }
+
+    public Integer getDaysWithoutWatching() {
+        return matchRepository.getDaysWithoutWatching();
+    }
     }
