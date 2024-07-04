@@ -26,7 +26,7 @@ public class ReportsService {
 public ReportsResponseDTO getAllReports(){
     Integer matchesQuantity = getMatchesQuantity();
     Integer winsQuantity = getWinsQuantity();
-    Double winPercentage = getWinPercentage();
+    Integer winPercentage = getWinPercentage();
     Team mostWatchedTeam = getMostWatchedTeam();
     Integer daysWithoutWatching = getDaysWithoutWatching();
     return new  ReportsResponseDTO(matchesQuantity,winsQuantity, winPercentage, mostWatchedTeam, daysWithoutWatching);
@@ -66,7 +66,7 @@ public Integer getWinsQuantity(){
 
 }
 
-    public Double getWinPercentage(){
+    public int getWinPercentage(){
 
         double winPercentage = 0;
         double wonPoints = 0;
@@ -97,9 +97,13 @@ public Integer getWinsQuantity(){
         totalPoints +=3;
         }
 
+        if (totalPoints == 0){
+            return 0;
+        }
+
         winPercentage = (wonPoints / totalPoints) * 100;
 
-        return winPercentage;
+        return (int) winPercentage;
     }
 
     public Team getMostWatchedTeam(){
