@@ -3,7 +3,9 @@ package gui.matchday.service;
 import gui.matchday.dto.reports.ReportsResponseDTO;
 import gui.matchday.model.Match;
 
+import gui.matchday.model.Team;
 import gui.matchday.repository.MatchRepository;
+import gui.matchday.repository.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +18,17 @@ import java.util.Objects;
 public class ReportsService {
 
     @Autowired
-    MatchRepository matchRepository;
+    private MatchRepository matchRepository;
+
+    @Autowired
+    private TeamRepository teamRepository;
 
 public ReportsResponseDTO getAllReports(){
     Integer matchesQuantity = getMatchesQuantity();
     Integer winsQuantity = getWinsQuantity();
     Double winPercentage = getWinPercentage();
-    return new  ReportsResponseDTO(matchesQuantity,winsQuantity, winPercentage);
+    Team mostWatchedTeam = getMostWatchedTeam();
+    return new  ReportsResponseDTO(matchesQuantity,winsQuantity, winPercentage, mostWatchedTeam);
 }
 
 private Integer getMatchesQuantity(){
@@ -95,5 +101,7 @@ public Integer getWinsQuantity(){
         return winPercentage;
     }
 
-    
+    public Team getMostWatchedTeam(){
+        return teamRepository.getMostWatchedTeam();
 }
+    }
