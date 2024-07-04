@@ -28,7 +28,7 @@ public class TeamService {
     }
 
     public List<Team> getAllTeams() {
-        return teamRepository.findAll();
+        return teamRepository.findAllOrderedById()  ;
     }
 
     public Team registerTeam(final TeamRequestDTO teamRequestDTO){

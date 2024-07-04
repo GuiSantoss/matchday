@@ -18,25 +18,31 @@ public class TeamController {
     @Autowired
     private TeamService teamService;
 
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/all")
     public List<Team> getAllTeams(){
         return teamService.getAllTeams();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/{id}")
     public ResponseEntity<TeamResponseDTO> getTeamById(@PathVariable("id") Long id){
         return ResponseEntity.ok(teamService.getTeamById((id)));
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<Team> addTeam(@RequestBody TeamRequestDTO teamRequestDTO) {
         return ResponseEntity.ok(teamService.registerTeam(teamRequestDTO));    }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping
     public ResponseEntity<Team> updateTeam(@RequestBody TeamRequestDTO teamRequestDTO){
         return ResponseEntity.ok(teamService.updateTeam(teamRequestDTO));
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTeam(@PathVariable("id") Long id){
          teamService.deleteTeam(id);

@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 
 public interface TeamRepository extends JpaRepository<Team, Long> {
@@ -21,4 +23,6 @@ public interface TeamRepository extends JpaRepository<Team, Long> {
             "   LIMIT 1)")
     Team getMostWatchedTeam();
 
+    @Query("SELECT t FROM team t ORDER BY t.id ASC")
+    List<Team> findAllOrderedById();
 }
