@@ -1,5 +1,10 @@
+import Navbar from "../../components/Navbar";
+
 export default function MatchListPage(){
-    return <>
+    return (
+    <>
+        <Navbar />
     <p>Lista de partidas</p>
     </>
+    )
 }
