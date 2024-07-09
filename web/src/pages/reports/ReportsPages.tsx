@@ -8,9 +8,7 @@ export default function ReportsPage(){
             <Navbar />
 
             <Container>
-
             <Title title="Resumo do seu diário de torcedor!"/>
-
             </Container>
 
         </>
