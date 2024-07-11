@@ -16,7 +16,7 @@ export default function AllRoutes(){
 
                 <Route path="/team/list" element={<TeamListPage/>} />
                 <Route path="/team/add" element={<AddTeamPage/>} />
-                <Route path="/team/edit" element={<EditTeamPage/>} />
+                <Route path="/team/edit/:id" element={<EditTeamPage/>} />
 
 
                 <Route path="/match/list" element={<MatchListPage/>} />
