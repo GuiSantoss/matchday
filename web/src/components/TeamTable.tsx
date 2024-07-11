@@ -3,6 +3,7 @@ import { TeamData } from "../interfaces/TeamData"
 import { IconButton } from "@mui/material"
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
+import api from "../services/api"
 
 const TableStyled = styled.table`
     width: 100%;
@@ -41,6 +42,18 @@ interface TeamTableProps {
 
 
 export default function TeamTable(props: TeamTableProps) {
+
+    const handleDeleteTeam = async (e: React.FormEvent, teamId: number) => {
+        e.preventDefault();
+
+        try {
+            await api.deleteTeam(teamId);
+            window.location.reload();
+        } catch (error) {
+            console.log('Erro ao deletar time', error)
+        }
+    };
+    
     return (
         <TableStyled>
             <TheadStyled>
@@ -65,7 +78,7 @@ export default function TeamTable(props: TeamTableProps) {
                          <IconButton>
                              <EditIcon />
                          </IconButton>
-                         <IconButton>
+                         <IconButton onClick={(e: React.FormEvent) => handleDeleteTeam(e, team.id!)}>
                              <DeleteIcon />
                          </IconButton>
                      </TdStyled>

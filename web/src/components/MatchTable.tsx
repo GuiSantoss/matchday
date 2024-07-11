@@ -56,11 +56,11 @@ interface MatchTableProps {
 
 export default function MatchTable(props: MatchTableProps) {
 
-    const handleDeleteMatch = async (e: React.FormEvent, teamId: number) => {
+    const handleDeleteMatch = async (e: React.FormEvent, matchId: number) => {
         e.preventDefault();
 
         try {
-            await api.deleteMatch(teamId);
+            await api.deleteMatch(matchId);
             window.location.reload();
         } catch (error) {
             console.log('Erro ao deletar partida', error)
