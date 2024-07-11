@@ -4,6 +4,7 @@ import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { MatchData } from "../interfaces/MatchData"
 import { format } from 'date-fns'
+import api from "../services/api"
 
 const TableStyled = styled.table`
     width: 100%;
@@ -52,7 +53,20 @@ interface MatchTableProps {
 }
 
 
+
 export default function MatchTable(props: MatchTableProps) {
+
+    const handleDeleteMatch = async (e: React.FormEvent, teamId: number) => {
+        e.preventDefault();
+
+        try {
+            await api.deleteMatch(teamId);
+            window.location.reload();
+        } catch (error) {
+            console.log('Erro ao deletar partida', error)
+        }
+    };
+
     return (
         <TableStyled>
             <TheadStyled>
@@ -87,7 +101,7 @@ export default function MatchTable(props: MatchTableProps) {
                          <IconButton>
                              <EditIcon />
                          </IconButton>
-                         <IconButton>
+                         <IconButton onClick={(e: React.FormEvent) => handleDeleteMatch(e, match.id!)}>
                              <DeleteIcon />
                          </IconButton>
                      </TdStyled>
